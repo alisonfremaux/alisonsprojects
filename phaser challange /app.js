@@ -10,7 +10,7 @@ function preload(){
 	game.load.image('star', 'assets/star.png'); 
 	game.load.spritesheet('dude', 'assets/dude.png', 32,48); 
 	game.load.spritesheet('baddie', 'assets/baddie.png',32,32);
-
+	game.load.spritesheet('firstaid', 'assets/firstaid.png', 32,32);
 
 }
 function create(){
@@ -61,6 +61,17 @@ function create(){
 
    	//create the enemy sprite ('baddie')
 	enemy1 = game.add.sprite(760, 20 , 'baddie')
+
+		//animation
+		enemy1.animations.add('left', [0,1], 10, true);
+		enemy1.animations.add('right', [2,3], 10, true);
+		game.physics.arcade.enable(enemy1);
+		enemy1.body.bounce.y = 0.2;
+		enemy1.body.gravity.y = 500;
+		enemy1.body.collideWorldBounds = true;
+
+		//create the first aid  ('firstaid')
+	enemy1 = game.add.sprite(760, 20 , 'firstaid')
 
 		//animation
 		enemy1.animations.add('left', [0,1], 10, true);
