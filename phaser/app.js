@@ -148,11 +148,9 @@ function loseLife(player, enemy){
 	enemy.kill();
 	enemy.reset(10,10);
 
-}
-if(enemy1.x > 759){
-enemy1.animations.play('left');
-	if(enemy1.x > 760){
-	} else if(enemy1.x < 405){
+
+	if(enemy1.x > 759){
+		enemy1.animations.play('left');
 		enemy1.body.velocity.x = -120;
 	} else if(enemy1.x > 405){
 		enemy1.animations.play('right');
