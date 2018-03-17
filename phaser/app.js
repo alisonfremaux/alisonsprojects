@@ -110,9 +110,8 @@ function update(){
 
 	moveEnemy(); 
 
- remove }
-}
-if(life <= 0){
+
+
 
 if(life =< 0){
 	endGame();
