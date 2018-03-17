@@ -90,13 +90,15 @@ function update(){
 	if(cursors.left.isDown){
 		player.animations.play('left');
 		player.body.velocity.x = -150;
-	} player.animations.play('right') ;
-		 }else {
+}	else if(cursors.right.isDown){
+	 player.animations.play('right') ;
 		player.body.velocity.x = 150;
-	} else (cursors.right.isDown){
+	}else {
 		player.animations.stop();
+		
 		player.frame = 4;
 	}
+
 
 	
 	if(cursors.up.isDown && player.body.touching.down){
