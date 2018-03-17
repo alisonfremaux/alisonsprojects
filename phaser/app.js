@@ -147,7 +147,9 @@ function loseLife(player, enemy){
 
 	enemy.kill();
 	enemy.reset(10,10);
+}
 
+function moveEnemy(){
 
 	if(enemy1.x > 759){
 		enemy1.animations.play('left');
