@@ -7,7 +7,7 @@ var life = 3;
 function preload(){
 	game.load.image('sky','assets/sky.png'); 
 	game.load.image('ground', 'assets/platform.png');
-	game.load.spritesheet('dude', 'assests/baddie.png', 32,32); 
+	game.load.image('star', 'assets/star.png'); 
 	game.load.spritesheet('baddie', 'assests/baddie.png',32,32);
 
 }
@@ -22,7 +22,7 @@ function create(){
 	game.enableBody = true; 
 
 	//create ground 
-	var group = platforms.create(0,550, 'ground');
+	var ground = platforms.create(0,550, 'ground'); 
 	ground.scale.setTo(2,2);
 	ground.body.immovable = true;
 
@@ -45,7 +45,7 @@ function create(){
 	lifelabel = game.add.text(10,5, "Lifes: ", style);
 	lifenumber = game.add.text(120, 5, life. style);
 	lifelabel.setShadow(3,3, 'rgba(0,0,0.5)', 2);
-	lifenumber.setShadow(3,3, 'rgba(0,0,0.5)', 2);
+	lifenumber.setShadow(3,3, 'rgba(0,0,0.5)', 2); 
 
 	//create the player sprite
 	player = game.add.sprite(32, 400, 'dude')
@@ -54,11 +54,12 @@ function create(){
 		player.animations.add('right', [5,6,7,8], 10, true);
 		game.physics.arcade.enable(player);
 		player.body.bounce.y = 0.2;
-		player.body.gravity.y = 350;
+		player.body.gravity.y = 300;
 		player.body.collideWorldBounds = true;
 
    	//create the enemy sprite ('baddie')
-	enemy1 = game.add.sprite(760, 20 'baddie')
+	enemy1 = game.add.sprite(760, 20 , 'baddie')
+
 		//animation
 		enemy1.animations.add('left', [0,1], 10, true);
 		enemy1.animations.add('right', [2,3], 10, true);
@@ -89,16 +90,16 @@ function update(){
 	if(cursors.left.isDown){
 		player.animations.play('left');
 		player.body.velocity.x = -150;
-	} else if(cursors.right.isDown){
-		player.animations.play('right'){
+	} player.animations.play('right') ;
+		 else {
 		player.body.velocity.x = 150;
 	} else (cursors.right.isDown){
 		player.animations.stop();
 		player.frame = 4;
 	}
 
-	//jump if touching the ground/platform
-	if(cursors,up,isDown && player.body.touching.down){
+	
+	if(cursors.up.isDown && player.body.touching.down){
 		player.body.velocity.y = -300; 
 	}
 
@@ -109,8 +110,9 @@ function update(){
 
 	moveEnemy(); 
 
-
+ remove }
 }
+if(life <= 0){
 
 if(life =< 0){
 	endGame();
@@ -123,7 +125,7 @@ if(life =< 0){
 function endGame(){
 	scorelabel.text = "GAME OVER!!! YOU SCORED; " + score;
 	player.kill();
-	scorenumber.visible = false; 
+	lifenumber.visible = false; 
 	lifelabel.visible = false; 
 	lifetext.visible = false; 
 
@@ -145,10 +147,10 @@ function loseLife(player, enemy){
 	enemy.reset(10,10);
 
 }
-
-function moveEnemy(){
+if(enemy1.x > 759){
+enemy1.animations.play('left');
 	if(enemy1.x > 760){
-		enemy1.animation.play('left');
+	} else if(enemy1.x < 405){
 		enemy1.body.velocity.x = -120;
 	} else if(enemy1.x > 405){
 		enemy1.animations.play('right');
