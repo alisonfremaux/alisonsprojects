@@ -115,7 +115,7 @@ function update(){
 
 
 
-if(life =< 0){
+if(life <= 0){
 	endGame();
 
 }
